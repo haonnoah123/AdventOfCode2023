@@ -8,10 +8,14 @@ import java.util.Scanner;
 public class Trebuchet {
 
   public static void main(String[] args) {
-     //partOne();
+     partOne();
+     partTwo();
+  }
+  
+  public static void partTwo() {
     String[] digits =
         new String[] {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-    ArrayList<String> input = importFile("InputDay1");
+    ArrayList<String> input = importFile("Day1Input");
     int total = 0;
     for (String line : input) {
       int low = getLtoR(line, digits);
@@ -119,7 +123,7 @@ public class Trebuchet {
   }
 
   public static void partOne() {
-    ArrayList<String> input = importFile("InputDay1");
+    ArrayList<String> input = importFile("Day1Input");
     int total = 0;
     for (String line : input) {
       total += Integer.parseInt(getFromLtoR(line) + getFromRtoL(line));

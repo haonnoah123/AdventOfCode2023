@@ -13,7 +13,7 @@ public class CubeConundrum {
   }
 
   public static void part2() {
-    ArrayList<String> input = importFile("InputDay2");
+    ArrayList<String> input = importFile("Day2Input");
     ArrayList<ArrayList<Game>> eachGameLine = new ArrayList<>();
     for (String line : input) {
       eachGameLine.add(convertLineToGame(line));
@@ -54,7 +54,7 @@ public class CubeConundrum {
   }
 
   public static void part1() {
-    ArrayList<String> input = importFile("InputDay2");
+    ArrayList<String> input = importFile("Day2Input");
     ArrayList<ArrayList<Game>> eachGameLine = new ArrayList<>();
     for (String line : input) {
       eachGameLine.add(convertLineToGame(line));
