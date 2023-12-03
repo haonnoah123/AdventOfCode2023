@@ -8,13 +8,16 @@ import java.util.Scanner;
 public class GearRatios {
 
   public static void main(String[] args) {
+    partOne();
+    partTwo();
+  }
+  
+  public static void partTwo() {
     ArrayList<String> input = importFile("Day3Input");
     String[][] inputInArr = putInputIn2DArray(input);
     inputInArr = surroundWithPeriod(inputInArr);
-    // System.out.println(twoDArrayToString(inputInArr));
     Gear[][] gearArray = convertStringArraytoGear(inputInArr);
-    System.out.println(getWhereTouchingStar(inputInArr, gearArray));
-    partOne();
+    System.out.println(getWhereTouchingStar(inputInArr, gearArray)); 
   }
 
   public static long getWhereTouchingStar(String[][] input, Gear[][] gears) {
