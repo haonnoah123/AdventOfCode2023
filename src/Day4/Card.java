@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Card {
 
-  ArrayList<Integer> winning;
-  ArrayList<Integer> myNumbers;
-  int quantity = 1;
+  private ArrayList<Integer> winning;
+  private ArrayList<Integer> myNumbers;
+  private int quantity = 1;
 
   public int getQuantity() {
     return quantity;
