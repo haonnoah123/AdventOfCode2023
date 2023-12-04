@@ -21,13 +21,9 @@ public class GearRatios {
   }
 
   public static long getWhereTouchingStar(String[][] input, Gear[][] gears) {
-    int previousNum = 0;
     long count = 0;
     for (int i = 0; i < input.length; i++) {
       for (int j = 0; j < input[i].length; j++) {
-        if (!checkIfDigit(input[i][j])) {
-          previousNum = 0;
-        }
         count += checkIfTouchingStar(i, j, input, gears);
       }
     }
@@ -111,7 +107,7 @@ public class GearRatios {
     return count;
   }
 
-  public static boolean checkIfDigit(String str) {
+  public static boolean checkIfDigit(String str) { 
     try {
       Integer.parseInt(str.trim());
       return true;
@@ -202,12 +198,10 @@ public class GearRatios {
       for (int j = 0; j < array[i].length; j++) {
         result.append(array[i][j]);
         if (j < array[i].length - 1) {
-          // Add a separator (e.g., comma) between elements in the same row
           result.append("");
         }
       }
       if (i < array.length - 1) {
-        // Add a newline between rows
         result.append("\n");
       }
     }
