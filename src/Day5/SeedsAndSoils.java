@@ -8,26 +8,30 @@ import java.util.Scanner;
 public class SeedsAndSoils {
 
   public static void main(String[] args) {
-    // partOne();
+    partOne();
+    partTwo(); // returns 69323688
+  }
+
+  public static void partTwo() {
     ArrayList<String> input = importFile("Day5Input");
     ArrayList<Long> initialSeeds = findInitialSeeds(input);
     ArrayList<Maps> maps = getMaps(input);
-    //updateInitialSeeds(initialSeeds);
-    for(Maps m : maps) {
-      m.reverseMaps();
-    }
-    System.out.println(followInitialSeed((long) 35, maps));
+    System.out.println(updateInitialSeeds(initialSeeds, maps));
   }
 
-  public static void updateInitialSeeds(ArrayList<Long> initialSeeds) {
-    ArrayList<Long> newSeeds = (ArrayList<Long>) initialSeeds.clone();
-    initialSeeds.clear();
-    for (int i = 0; i < newSeeds.size(); i += 2) {
-      Long seedAtI = newSeeds.get(i);
-      for (Long j = seedAtI; j < newSeeds.get((int) (i + 1)) + seedAtI; j++) {
-        initialSeeds.add((long) j);
+  public static Long updateInitialSeeds(ArrayList<Long> initialSeeds, ArrayList<Maps> maps) {
+    Long min = Long.MAX_VALUE;
+    for (int i = 0; i < initialSeeds.size(); i += 2) {
+      Long seedAtI = initialSeeds.get(i);
+      Long goToSeed = initialSeeds.get((int) (i + 1)) + seedAtI;
+      for (Long j = seedAtI; j < goToSeed; j++) {
+        Long curr = followInitialSeed(j, maps);
+        if (curr < min) {
+          min = curr;
+        }
       }
     }
+    return min;
   }
 
   public static void partOne() {
@@ -55,8 +59,8 @@ public class SeedsAndSoils {
     Long thisSeed = initialSeed;
     for (Maps map : maps) {
       for (Map m : map.getMaps()) {
-        long maxSource = m.getSourceRangeStart() + m.getRangeLength();
-        if (maxSource >= thisSeed && m.getSourceRangeStart() <= thisSeed) {
+        Long maxSource = m.getSourceRangeStart() + m.getRangeLength();
+        if (maxSource > thisSeed && m.getSourceRangeStart() <= thisSeed) {
           thisSeed = m.getDestinationRangeStart() + thisSeed - m.getSourceRangeStart();
           break;
         }

@@ -42,7 +42,6 @@ public class Map {
     for (int i = 0; i < this.rangeLength; i++) {
       output += (this.sourceRangeStart + i) + "\t" + (this.destinationRangeStart + i) + "\n";
     }
-    //System.out.prLongln(output);
     return output;
   }
 
